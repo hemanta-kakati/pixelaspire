@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import ProjectCategories from "./components/ProjectCategories";
+import { useEffect, useState } from "react";
+import Loading from "./components/Loading";
+import Testimonial from "./components/Testimonial";
+import { useAppContext } from "./AppContext";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  // const [isLoading, setisLoading] = useState(true);
+  const { isLoading, setIsLoading } = useAppContext();
+  const preloader = document.querySelector("#preloader-section");
+
+  useEffect(() => {
+    let timeout;
+    if (preloader) {
+      timeout = setTimeout(() => {
+        setIsLoading(false);
+        preloader.style.display = "none";
+      }, 2000);
+    }
+    return () => clearTimeout(timeout);
+  }, [isLoading == false]);
+
+  return !isLoading ? (
+    <>
+      <ProjectCategories />
+      <Testimonial />
+    </>
+  ) : null;
+  // return <Loading />;
 }
 
 export default App;

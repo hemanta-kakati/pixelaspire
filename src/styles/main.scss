@@ -1,0 +1,330 @@
+@import "variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "mixins.scss";
+// @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300&display=swap");
+
+body {
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  // font-size: 0.8rem;
+  // @include atSmall {
+  //   font-size: 1.1rem;
+  // }
+  // @include atMedium {
+  //   font-size: 1.2rem;
+  // }
+}
+
+// .ctn-preloader .animation-preloader .txt-loading {
+//   font: bold 5.4em "Montserrat", sans-serif;
+// }
+
+section {
+  overflow: hidden;
+}
+
+.section-heading {
+  text-align: center;
+  margin: 4.8rem 0 4.8rem 0;
+  .heading {
+    color: $colorGray;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 31.6px;
+    margin-bottom: 2.8rem;
+  }
+
+  .h-light,
+  .h-bold {
+    color: #1b1f29;
+    font-size: 50px;
+    text-transform: uppercase;
+    line-height: 1.13em;
+  }
+
+  .h-light {
+    font-weight: 200;
+  }
+
+  .h-bold {
+    font-weight: 800;
+  }
+}
+
+.container-fluid {
+  padding: 0;
+  // overflow: hidden;
+}
+
+.bgDark {
+  background-color: $bgDark;
+}
+
+.preloader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .loading-logo {
+    position: relative;
+    color: #000;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "Loading";
+      color: rgb(202, 151, 11);
+      animation: slide 3s linear infinite;
+      overflow: hidden;
+    }
+
+    @keyframes slide {
+      0% {
+        width: 0%;
+        transform: rotateX(-180deg);
+      }
+      50% {
+        width: 100%;
+        transform: rotateX(-180deg);
+      }
+      100% {
+        width: 0%;
+      }
+    }
+  }
+}
+
+#hero-section {
+  height: 100vh;
+  background: #000;
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}
+
+.masonry-card {
+  position: relative;
+  img {
+    display: block;
+  }
+
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    .project-category {
+      background-color: rgba(71, 71, 71, 0.7);
+    }
+
+    box-shadow: 0px 12px 27px -12px rgba(0, 0, 0, 0.67);
+    -webkit-box-shadow: 0px 12px 27px -12px rgba(0, 0, 0, 0.67);
+    cursor: pointer;
+  }
+
+  .project-category {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+
+    h2 {
+      font-weight: 500;
+    }
+  }
+}
+
+#project-categories-list {
+  // width: 100%;
+}
+
+#testimonial {
+  background: $bgDark;
+
+  .section-heading .h-light,
+  .section-heading .h-bold,
+  .section-heading .heading {
+    color: #fff;
+  }
+
+  .testimonial-wrapper {
+    // min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 150px;
+
+    .blockquote-container {
+      width: 80%;
+      margin: 0 auto;
+      position: relative;
+      padding: 3rem 1.8rem;
+
+      blockquote {
+        background: #fff;
+        min-height: 200px;
+        // padding: 0 30px 20px;
+        display: flex;
+        align-items: center;
+        .quote {
+          padding: 0 30px 20px;
+          font-size: large;
+          color: $gray;
+          text-align: center;
+          margin: 0;
+        }
+      }
+
+      .quote-icon-left,
+      .quote-icon-right {
+        position: absolute;
+        color: $dark-yellow;
+        font-size: 2.8rem;
+      }
+
+      .quote-icon-left {
+        top: -5%;
+        left: -5%;
+      }
+
+      .quote-icon-right {
+        bottom: 5%;
+        right: -5%;
+      }
+
+      .user {
+        // width: 70%;
+        position: absolute;
+        bottom: -14%;
+        left: -3%;
+        img {
+          object-fit: cover;
+          width: 10rem;
+          height: 10rem;
+          margin-right: 10px;
+          border-radius: 50%;
+        }
+
+        .user-details {
+          margin-top: 2.8rem;
+          .title {
+            color: $dark-yellow;
+            margin: 0;
+          }
+          .position {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  /******** Swiper Styles  ************/
+  .swiper-pagination-bullet {
+    // position: static;
+    background-color: #fff !important;
+    height: 15px;
+    width: 15px;
+  }
+
+  // .swiper-pagination-bullet-active-prev,
+  // .swiper-pagination-bullet-active-prev-prev,
+  // .swiper-pagination-bullet-active-next,
+  // .swiper-pagination-bullet-active-next-next {
+  //   transform: scale(0.8);
+  // }
+
+  .swiper-pagination {
+    // border: 1px solid red;
+    left: 80%;
+    bottom: 30%;
+    // display: flex;
+    // justify-content: center;
+    // width: auto;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: rgb(219, 219, 219);
+  }
+
+  /******** Sponsored Companies  *********/
+  .logos {
+    max-width: 140px;
+    max-height: 140px;
+    object-fit: cover;
+  }
+}
+
+/******** Media queries ************/
+
+@include media-breakpoint-down(lg) {
+  #testimonial {
+    .testimonial-wrapper {
+      padding-top: 20px;
+      .blockquote-container blockquote .quote {
+        padding: 40px 30px;
+      }
+    }
+
+    .swiper-pagination {
+      left: 50%;
+      bottom: 10%;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .section-heading {
+    .heading {
+      font-size: 12px;
+      letter-spacing: 15px;
+    }
+
+    .subheading {
+      .h-light,
+      .h-bold {
+        font-size: 35px;
+      }
+    }
+  }
+
+  #testimonial {
+    .testimonial-wrapper {
+      .blockquote-container {
+        .quote-icon-right {
+          bottom: 0;
+        }
+        .user img {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .swiper-pagination {
+      bottom: 2%;
+    }
+  }
+}
